@@ -7,7 +7,8 @@ Phone-camera vibration screening with OpenCV 5 on AWS. An evidence-driven agent 
 
 - Working app: https://dhfpmgo5xkqhh.cloudfront.net/
 - Judge guide: https://dhfpmgo5xkqhh.cloudfront.net/judge.html
-- Public demo video (4:22): https://dhfpmgo5xkqhh.cloudfront.net/VibraLens-demo.mp4
+- YouTube demo video (4:22): https://www.youtube.com/watch?v=dArWXwFDViY
+- Direct MP4 backup: https://dhfpmgo5xkqhh.cloudfront.net/VibraLens-demo.mp4
 - Judge-accessible source/report archive: https://dhfpmgo5xkqhh.cloudfront.net/VibraLens-submission.zip
 - GitHub source repository: https://github.com/Aakarsh2007/Vibrations
 - Technical report: https://dhfpmgo5xkqhh.cloudfront.net/TECHNICAL_REPORT.md

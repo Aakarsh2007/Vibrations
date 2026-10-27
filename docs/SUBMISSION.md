@@ -38,7 +38,7 @@ Collect simultaneous phone/contact-sensor measurements, validate phone timing pr
 | Judge-accessible code | https://dhfpmgo5xkqhh.cloudfront.net/VibraLens-submission.zip |
 | Build/deploy/test instructions | README, requirements and infrastructure guide |
 | Endpoint or arranged live demo | https://dhfpmgo5xkqhh.cloudfront.net/ |
-| Video ≤5 minutes, team visible | https://dhfpmgo5xkqhh.cloudfront.net/VibraLens-demo.mp4 — synthetic examples, actual AWS application, Aakarsh's team credit, disclosed generated narration |
+| Video ≤5 minutes, team visible | https://www.youtube.com/watch?v=dArWXwFDViY — synthetic examples, actual AWS application, Aakarsh's team credit, disclosed generated narration |
 | Evaluation and limitations | `samples/results.json`, tests, report, e2e evidence |
 | Agentic Vision evidence | Recorded state transitions / trace; label rule or Bedrock mode accurately |
 | COOL award | Not claimed; no COOL workload or comparison exists |

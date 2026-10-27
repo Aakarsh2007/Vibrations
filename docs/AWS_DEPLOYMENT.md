@@ -5,7 +5,8 @@ Prepared by Aakarsh Saxena for the OpenCV AI Competition 2026.
 - **App:** https://dhfpmgo5xkqhh.cloudfront.net/
 - **Judge guide:** https://dhfpmgo5xkqhh.cloudfront.net/judge.html
 - **Runtime health:** https://dhfpmgo5xkqhh.cloudfront.net/healthz
-- **Video:** https://dhfpmgo5xkqhh.cloudfront.net/VibraLens-demo.mp4
+- **YouTube video:** https://www.youtube.com/watch?v=dArWXwFDViY
+- **Direct MP4 backup:** https://dhfpmgo5xkqhh.cloudfront.net/VibraLens-demo.mp4
 - **Code, report and evidence archive:** https://dhfpmgo5xkqhh.cloudfront.net/VibraLens-submission.zip
 
 Region: **ap-southeast-2**. Compute: **Ubuntu 24.04, x86-64, t3.small**. OpenCV runtime: **5.0.0**. Persistence backend: **AWS (S3 + DynamoDB)**. Planner: **rules**; no Bedrock or COOL execution is claimed. EC2 uses a workload role, an encrypted EBS volume and IMDSv2. The origin accepts traffic only from the CloudFront origin-facing prefix list and requires a secret origin header. There is no public SSH rule or permanent IAM access key.

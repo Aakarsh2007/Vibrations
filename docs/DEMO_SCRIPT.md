@@ -1,5 +1,7 @@
 # Five-minute submission video
 
+**Published demonstration (4:22): [Watch on YouTube](https://www.youtube.com/watch?v=dArWXwFDViY).** The plan below is the original recording outline; the published video includes AWS execution evidence and disclosed computer-generated narration.
+
 Target length: **4:40**. Presenter: **Aakarsh Saxena**, solo developer. Show a camera introduction and screen recording; keep recordings synthetic labels visible. Use a real AWS endpoint after deployment. Pre-run analyses to avoid long waits, then start one new sample live to prove interaction.
 
 | Time | Show | Suggested narration |
