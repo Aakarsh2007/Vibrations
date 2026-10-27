@@ -1,0 +1,13 @@
+__pycache__/
+*.pyc
+data_local/
+.pytest_cache/
+*.part
+.env
+.venv/
+.deps/
+dist/
+.test-*/
+video/build/
+.tools/
+vibralens-deployment.json

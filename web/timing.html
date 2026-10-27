@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VibraLens timing test</title>
+<style>
+  html, body { margin: 0; height: 100%; background: #000; color: #888; font: 16px system-ui, sans-serif; }
+  #flash { position: fixed; inset: 0; }
+  #hud { position: fixed; left: 12px; bottom: 12px; background: #222; color: #ddd; padding: 10px 12px; border-radius: 8px; max-width: 520px; }
+  button { font: inherit; min-height: 44px; padding: 8px 14px; margin-top: 8px; }
+</style>
+</head>
+<body>
+<div id="flash"></div>
+<div id="hud">
+  <b>Gate G1: slow-motion timing test</b>
+  <p>1. Click Start. The screen flips black/white on every display refresh.<br>
+     2. Film the screen for 10 s in your phone's Slow-motion mode (240 or 120 fps), filling most of the picture.<br>
+     3. Upload the original file the way you will in the app, then run <code>python eval/timing_check_video.py VIDEO</code>.</p>
+  <p id="rate">Measuring display refresh rate…</p>
+  <button id="go">Start flashing</button>
+</div>
+<script>
+"use strict";
+const flash = document.getElementById("flash"), rate = document.getElementById("rate");
+let on = false, running = false;
+// Measure the real display refresh rate (laptops can be 60, 59.94, 90, 120 or 144 Hz).
+(function measure() {
+  const t = []; function f(ts) { t.push(ts); if (t.length < 241) requestAnimationFrame(f); else {
+    const d = t.slice(1).map((v, i) => v - t[i]).sort((a, b) => a - b); const med = d[Math.floor(d.length / 2)];
+    const hz = 1000 / med; rate.textContent = `Display refresh ≈ ${hz.toFixed(2)} Hz → expected flash fundamental ≈ ${(hz / 2).toFixed(2)} Hz. Write this down.`;
+  } } requestAnimationFrame(f);
+})();
+document.getElementById("go").onclick = () => {
+  running = !running; document.getElementById("go").textContent = running ? "Stop" : "Start flashing";
+  const tick = () => { if (!running) { flash.style.background = "#000"; return; } on = !on; flash.style.background = on ? "#fff" : "#000"; requestAnimationFrame(tick); };
+  requestAnimationFrame(tick);
+};
+</script>
+</body>
+</html>

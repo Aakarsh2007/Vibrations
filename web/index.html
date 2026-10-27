@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VibraLens</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="top">
+  <a href="#/" class="brand" aria-label="VibraLens home"><span class="logo" aria-hidden="true">◎</span> VibraLens</a>
+  <span class="tag">Phone-camera vibration screening · OpenCV 5 on AWS</span>
+</header>
+
+<main id="app" tabindex="-1">
+  <p class="muted">Loading…</p>
+</main>
+
+<template id="tpl-home">
+  <section class="card hero">
+    <p class="eyebrow">SEE THE VIBRATION. KNOW THE NEXT STEP.</p>
+    <h1>A maintenance check,<br>through a different lens.</h1>
+    <p>Stick a printed marker on the machine housing, record 10 seconds of slow motion, upload. VibraLens measures the
+      vibration with OpenCV and an assistant tells you if the recording is good enough, or what to record next.</p>
+    <div class="row">
+      <a class="btn primary" href="#/new">New recording</a>
+      <a class="btn" href="/api/markers.png" download>Download markers (print on A4)</a>
+      <a class="btn" href="/judge.html">Judge guide &amp; demo</a>
+    </div>
+    <div class="hero-facts"><span><b>01</b> Capture with your phone</span><span><b>02</b> Verify with OpenCV 5</span><span><b>03</b> Act with human oversight</span></div>
+  </section>
+
+  <section class="card">
+    <h2>Try a sample</h2>
+    <p class="muted small">Explore four synthetic scenarios through the real OpenCV pipeline. Start with the baseline, then run the same fan with added mass to see the agent respond to a change.</p>
+    <div id="samples" class="grid"></div>
+  </section>
+
+  <section class="card">
+    <h2>Your machines</h2>
+    <div id="assets"><p class="muted">No machines yet.</p></div>
+  </section>
+  <section class="card trust-panel"><h2>Evidence before advice.</h2><p>VibraLens checks capture timing, marker visibility and camera motion before interpreting a signal. When the evidence is weak, it asks for a better recording.</p><p class="small muted">Current validation: synthetic recordings. Frequency and relative trends only; absolute vibration and ISO zones remain disabled until contact-sensor validation.</p></section>
+</template>
+
+<template id="tpl-new">
+  <section class="card">
+    <h1>New recording</h1>
+    <ol class="steps">
+      <li><b>Print</b> the marker sheet. <b>Measure</b> the black square of marker 1 with a ruler (printers often rescale).</li>
+      <li><b>Switch the machine off</b>, then stick marker 1 on the <b>stationary housing</b> (bearing area). Never on shafts, belts, couplings or blades.</li>
+      <li>Stick marker 7 on a <b>wall or pillar beside it</b>, at the same height in the picture, not on the machine's base.</li>
+      <li>Put the phone on a tripod (not on the machine's base), about 15–25 cm away. Turn stabilisation off if you can, tap to lock focus.</li>
+      <li>Start the machine. Record <b>10 s in Slow-motion (240 or 120 fps)</b>. Upload the <b>original</b> file (not via WhatsApp).</li>
+    </ol>
+    <form id="f-new" class="form">
+      <fieldset>
+        <legend>Machine</legend>
+        <label>Choose machine <select name="asset_id" id="asset-select"></select></label>
+        <div id="new-asset" class="sub">
+          <label>Name <input name="name" maxlength="80" placeholder="e.g. Pump house motor 2"></label>
+          <label>Type <select name="machine_type">
+            <option value="unknown">Don't know</option><option value="electric_motor">Electric motor</option>
+            <option value="fan_blower">Fan / blower</option><option value="compressor">Compressor (rotary)</option>
+            <option value="conveyor">Conveyor</option><option value="rotordynamic_pump">Pump (centrifugal)</option>
+            <option value="reciprocating_engine">Engine (piston)</option><option value="other">Other</option></select></label>
+          <label>Coupling <select name="coupling"><option value="unknown">Don't know</option><option value="flexible">Flexible coupling</option>
+            <option value="rigid">Rigid</option><option value="close-coupled">Close-coupled / on same shaft</option></select></label>
+          <label>Rated power (kW) <input name="rated_kw" type="number" step="0.1" min="0" placeholder="from nameplate"></label>
+          <label>Rated speed (rpm) <input name="rated_rpm" type="number" min="60" max="30000" placeholder="from nameplate"></label>
+          <label>Mounting <select name="support"><option value="unknown">Don't know</option><option value="rigid">Rigid (heavy base)</option>
+            <option value="flexible">Flexible (springs / light frame)</option></select></label>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Recording</legend>
+        <label>Measured marker side (mm) <input name="marker_mm" type="number" step="0.1" min="10" max="200" value="40" required></label>
+        <label>Measurement point <input name="point_id" maxlength="40" value="P1 drive-end horizontal"></label>
+        <label>Video <input name="file" type="file" accept="video/mp4,video/quicktime" required></label>
+        <label class="check"><input type="checkbox" name="safety" required> I placed the markers with the machine switched off, only on stationary parts, and I am standing clear of moving parts.</label>
+      </fieldset>
+      <div class="row"><button class="btn primary" type="submit">Upload and analyse</button><span id="up-status" class="muted" role="status"></span></div>
+    </form>
+  </section>
+</template>
+
+<template id="tpl-session">
+  <section class="card" aria-live="polite">
+    <div class="row between"><h1>Analysis</h1><span id="s-badge" class="badge"></span></div>
+    <button id="export-report" class="btn" type="button">Download evidence report</button>
+    <ol id="timeline" class="timeline"></ol>
+    <div id="pending"></div>
+  </section>
+  <section class="card" id="verdict"></section>
+  <section class="card" id="agent">
+    <h2>Assistant decisions</h2>
+    <p class="muted small">Each step shows what OpenCV observed and what the assistant did next.</p>
+    <div id="decisions"></div>
+    <details><summary>Full trace</summary><div id="trace"></div></details>
+  </section>
+</template>
+
+<footer class="foot muted small">
+  Screening tool, not a certified vibration analyser. Never touch running machinery. A human approves every work order.
+</footer>
+<script src="app.js"></script>
+</body>
+</html>

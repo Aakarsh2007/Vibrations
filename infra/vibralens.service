@@ -1,0 +1,16 @@
+[Unit]
+Description=VibraLens API + worker
+After=network-online.target
+
+[Service]
+User=vibralens
+WorkingDirectory=/opt/vibralens/app
+EnvironmentFile=/etc/vibralens.env
+ExecStart=/opt/vibralens/venv/bin/uvicorn vibralens.api:app --host 0.0.0.0 --port 8000 --workers 1
+Restart=always
+RestartSec=3
+NoNewPrivileges=true
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

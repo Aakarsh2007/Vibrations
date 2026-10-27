@@ -1,0 +1,3 @@
+# Optional local deployment dependencies for AWS CLI browser-login profiles.
+boto3==1.43.118
+botocore[crt]==1.43.118

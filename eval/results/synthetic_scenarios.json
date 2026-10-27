@@ -1,0 +1,245 @@
+[
+ {
+  "name": "blurry",
+  "timing": "PROBABLE",
+  "fps": 240.0,
+  "q_flags": [
+   "blurry",
+   "amplitude_below_reliable"
+  ],
+  "class": "LOWER_BOUND",
+  "f1x": 24.301,
+  "f_true": 24.3,
+  "amp1x_mm": 0.076063,
+  "amp_true": 0.08,
+  "v_band": 9.3034,
+  "v_true": 10.072,
+  "dl": 0.4566,
+  "snr": 53.96,
+  "unc%": 24.6,
+  "sharp": 0.0405,
+  "secs": 22.7
+ },
+ {
+  "name": "camera_shake",
+  "timing": "PROBABLE",
+  "fps": 240.0,
+  "q_flags": [
+   "camera_shake",
+   "amplitude_below_reliable"
+  ],
+  "class": "LOWER_BOUND",
+  "f1x": 24.301,
+  "f_true": 24.3,
+  "amp1x_mm": 0.079536,
+  "amp_true": 0.08,
+  "v_band": 10.4964,
+  "v_true": 10.072,
+  "dl": 0.437,
+  "snr": 58.95,
+  "unc%": 18.1,
+  "sharp": 0.3328,
+  "secs": 25.1
+ },
+ {
+  "name": "dark",
+  "timing": "PROBABLE",
+  "fps": 240.0,
+  "q_flags": [
+   "low_light"
+  ],
+  "class": "RELIABLE",
+  "f1x": 24.301,
+  "f_true": 24.3,
+  "amp1x_mm": 0.080749,
+  "amp_true": 0.08,
+  "v_band": 9.7901,
+  "v_true": 10.072,
+  "dl": 0.8337,
+  "snr": 31.37,
+  "unc%": 18.6,
+  "sharp": 0.3372,
+  "secs": 13.2
+ },
+ {
+  "name": "duplicated",
+  "timing": "PROBABLE",
+  "fps": 240.0,
+  "q_flags": [
+   "duplicated_frames"
+  ],
+  "class": "INCONCLUSIVE",
+  "f1x": null,
+  "f_true": 24.3,
+  "amp1x_mm": null,
+  "amp_true": 0.08,
+  "v_band": null,
+  "v_true": 10.072,
+  "dl": null,
+  "snr": null,
+  "unc%": null,
+  "sharp": 0.3307,
+  "secs": 27.6
+ },
+ {
+  "name": "good_healthy",
+  "timing": "PROBABLE",
+  "fps": 240.0,
+  "q_flags": [
+   "amplitude_below_reliable"
+  ],
+  "class": "LOWER_BOUND",
+  "f1x": 24.305,
+  "f_true": 24.3,
+  "amp1x_mm": 0.007999,
+  "amp_true": 0.012,
+  "v_band": 0.8486,
+  "v_true": 1.395,
+  "dl": 0.2069,
+  "snr": 12.52,
+  "unc%": 73.1,
+  "sharp": 0.3529,
+  "secs": 25.7
+ },
+ {
+  "name": "good_imbalance",
+  "timing": "PROBABLE",
+  "fps": 240.0,
+  "q_flags": [
+   "amplitude_below_reliable"
+  ],
+  "class": "LOWER_BOUND",
+  "f1x": 24.301,
+  "f_true": 24.3,
+  "amp1x_mm": 0.075691,
+  "amp_true": 0.08,
+  "v_band": 9.8071,
+  "v_true": 10.072,
+  "dl": 0.3997,
+  "snr": 61.34,
+  "unc%": 7.3,
+  "sharp": 0.3361,
+  "secs": 25.5
+ },
+ {
+  "name": "low_bitrate",
+  "timing": "PROBABLE",
+  "fps": 240.0,
+  "q_flags": [
+   "amplitude_below_reliable",
+   "low_bitrate"
+  ],
+  "class": "LOWER_BOUND",
+  "f1x": 24.289,
+  "f_true": 24.3,
+  "amp1x_mm": 0.072038,
+  "amp_true": 0.08,
+  "v_band": 9.1205,
+  "v_true": 10.072,
+  "dl": 0.8107,
+  "snr": 28.77,
+  "unc%": 36.4,
+  "sharp": 0.2877,
+  "secs": 23.1
+ },
+ {
+  "name": "no_reference",
+  "timing": "PROBABLE",
+  "fps": 240.0,
+  "q_flags": [
+   "ref_missing"
+  ],
+  "class": "INCONCLUSIVE",
+  "f1x": 24.301,
+  "f_true": 24.3,
+  "amp1x_mm": 0.081243,
+  "amp_true": 0.08,
+  "v_band": 9.9999,
+  "v_true": 10.072,
+  "dl": 0.3584,
+  "snr": 73.43,
+  "unc%": 2.7,
+  "sharp": 0.3315,
+  "secs": 26.3
+ },
+ {
+  "name": "ref_vibrating",
+  "timing": "PROBABLE",
+  "fps": 240.0,
+  "q_flags": [
+   "ref_vibrating",
+   "amplitude_below_reliable"
+  ],
+  "class": "LOWER_BOUND",
+  "f1x": 24.295,
+  "f_true": 24.3,
+  "amp1x_mm": 0.03724,
+  "amp_true": 0.08,
+  "v_band": 6.7255,
+  "v_true": 10.072,
+  "dl": 0.3614,
+  "snr": 33.37,
+  "unc%": 19.9,
+  "sharp": 0.3303,
+  "secs": 24.8
+ },
+ {
+  "name": "slowed_no_tag",
+  "timing": "UNRELIABLE",
+  "fps": null,
+  "q_flags": null,
+  "class": null,
+  "f1x": null,
+  "f_true": 24.3,
+  "amp1x_mm": null,
+  "amp_true": 0.08,
+  "v_band": null,
+  "v_true": 10.072,
+  "dl": null,
+  "snr": null,
+  "unc%": null,
+  "sharp": null,
+  "secs": 2.1
+ },
+ {
+  "name": "slowed_with_tag",
+  "timing": "PROBABLE",
+  "fps": 240.0,
+  "q_flags": [
+   "amplitude_below_reliable"
+  ],
+  "class": "LOWER_BOUND",
+  "f1x": 24.3,
+  "f_true": 24.3,
+  "amp1x_mm": 0.075203,
+  "amp_true": 0.08,
+  "v_band": 9.6697,
+  "v_true": 10.072,
+  "dl": 0.4218,
+  "snr": 57.74,
+  "unc%": 7.4,
+  "sharp": 0.3356,
+  "secs": 26.6
+ },
+ {
+  "name": "tiny_marker",
+  "timing": "PROBABLE",
+  "fps": 240.0,
+  "q_flags": [
+   "marker_too_small",
+   "amplitude_below_reliable"
+  ],
+  "class": "LOWER_BOUND",
+  "f1x": 24.265,
+  "f_true": 24.3,
+  "amp1x_mm": 0.071373,
+  "amp_true": 0.08,
+  "v_band": 8.893,
+  "v_true": 10.072,
+  "dl": 2.4741,
+  "snr": 9.33,
+  "unc%": 66.2,
+  "sharp": 0.162,
+  "secs": 13.3
+ }
+]

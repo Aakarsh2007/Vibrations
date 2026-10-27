@@ -1,0 +1,10 @@
+{
+ "synthetic": true,
+ "f_vib": 24.3,
+ "amp_mm": 0.012,
+ "harm2": 0.2,
+ "fps": 240,
+ "marker_mm": 40.0,
+ "v_rms_true_mm_s": 1.3953443069548015,
+ "px_amp_true": 0.045
+}

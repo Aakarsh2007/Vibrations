@@ -1,0 +1,10 @@
+﻿[
+ {"name": "healthy-fan", "title": "1. Healthy fan (baseline)", "desc": "SYNTHETIC recording, small vibration. Run this first.", "file": "synthetic_good_healthy.mp4", "marker_mm": 40.0, "point_id": "P1 motor housing", "view": "radial",
+  "asset": {"name": "Demo fan (synthetic)", "machine_type": "fan_blower", "coupling": "unknown", "rated_kw": 0.06, "rated_rpm": null, "support": "flexible"}},
+ {"name": "fan-added-mass", "title": "2. Same fan with added mass", "desc": "SYNTHETIC recording, strong 1x vibration; compared with the baseline.", "file": "synthetic_good_imbalance.mp4", "marker_mm": 40.0, "point_id": "P1 motor housing", "view": "radial",
+  "asset": {"name": "Demo fan (synthetic)", "machine_type": "fan_blower", "coupling": "unknown", "rated_kw": 0.06, "rated_rpm": null, "support": "flexible"}},
+ {"name": "bad-capture", "title": "Bad capture: marker too small", "desc": "SYNTHETIC recording filmed from too far away.", "file": "synthetic_tiny_marker.mp4", "marker_mm": 40.0, "point_id": "P1 motor housing", "view": "radial",
+  "asset": {"name": "Demo fan (synthetic)", "machine_type": "fan_blower", "coupling": "unknown", "rated_kw": 0.06, "rated_rpm": null, "support": "flexible"}},
+ {"name": "timing-problem", "title": "Timing problem", "desc": "SYNTHETIC 240 fps clip re-saved at 30 fps without metadata.", "file": "synthetic_slowed_no_tag.mp4", "marker_mm": 40.0, "point_id": "P1 motor housing", "view": "radial",
+  "asset": {"name": "Demo fan (synthetic)", "machine_type": "fan_blower", "coupling": "unknown", "rated_kw": 0.06, "rated_rpm": null, "support": "flexible"}}
+]

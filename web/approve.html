@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>VibraLens approval</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="top"><span class="brand"><span class="logo" aria-hidden="true">◎</span> VibraLens</span><span class="tag">Work-order approval</span></header>
+<main id="m"><p class="muted">Loading…</p></main>
+<script>
+"use strict";
+const esc = (v) => String(v ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const tok = new URLSearchParams(location.hash.slice(1)).get("t") || "";
+const m = document.getElementById("m");
+async function post(path, body) {
+  const r = await fetch(path, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) });
+  const j = await r.json().catch(() => ({}));
+  if (!r.ok) throw new Error(typeof j.detail === "string" ? j.detail : "Request failed");
+  return j;
+}
+(async () => {
+  try {
+    const w = await post("/api/approvals/preview", { token: tok });   // POST: viewing never changes anything
+    const ev = (w.summary.evidence || []).map((e) => `<li>${esc(e)}</li>`).join("");
+    if (w.status !== "PENDING") { m.innerHTML = `<section class="card"><h1>Work order ${esc(w.status.toLowerCase())}</h1><p>This link can no longer be used.</p></section>`; return; }
+    m.innerHTML = `<section class="card"><h1>Approve maintenance work order?</h1><ul>${ev}</ul><p><b>Recommended:</b> ${esc(w.summary.recommended_action)}</p>
+      <p class="small muted">Expires ${new Date(w.expires_at * 1000).toLocaleString()}. Approving creates no automatic action on the machine.</p>
+      <form class="form" id="f"><label>Your name <input name="n" required minlength="2" maxlength="80"></label>
+      <label>Comment (optional) <input name="c" maxlength="500"></label>
+      <div class="row"><button class="btn primary" value="approve">Approve</button><button class="btn" value="reject">Reject</button><span role="status" class="muted"></span></div></form></section>`;
+    const f = document.getElementById("f");
+    f.onsubmit = (e) => e.preventDefault();
+    f.querySelectorAll("button").forEach((b) => b.onclick = async (e) => {
+      e.preventDefault(); if (!f.reportValidity()) return;
+      f.querySelectorAll("button").forEach((x) => (x.disabled = true));
+      try { const r = await post("/api/approvals/decide", { token: tok, decision: b.value, approver_name: f.n.value, comment: f.c.value });
+        m.innerHTML = `<section class="card"><h1>Recorded: ${esc(r.status.toLowerCase())}</h1><p>Thank you. The decision is in the audit log.</p></section>`; }
+      catch (err) { f.querySelector("[role=status]").textContent = err.message; f.querySelectorAll("button").forEach((x) => (x.disabled = false)); }
+    });
+  } catch (e) { m.innerHTML = `<section class="card"><h1>Link not valid</h1><p>${esc(e.message)}</p></section>`; }
+})();
+</script>
+</body>
+</html>

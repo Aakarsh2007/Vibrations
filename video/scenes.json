@@ -1,0 +1,88 @@
+[
+  {
+    "title": "VibraLens",
+    "subtitle": "See the vibration. Verify the next step.",
+    "bullets": [
+      "Aakarsh Saxena | Solo developer",
+      "OpenCV AI Competition 2026",
+      "Synthetic demonstration | AWS execution verified"
+    ],
+    "sample": "synthetic_good_imbalance.mp4",
+    "narration": "VibraLens explores a simple question: can a slow motion phone camera provide useful evidence for machine maintenance? Created by solo developer Aakarsh Saxena, it combines OpenCV five with an evidence driven agent. This demonstration uses synthetic recordings and the deployed AWS application. The narration is computer generated. The goal is useful screening and an informed next step, rather than a claim of certified diagnosis."
+  },
+  {
+    "title": "Capture evidence safely",
+    "subtitle": "Two markers separate machine motion from camera motion.",
+    "bullets": [
+      "ID 1: stationary machine housing",
+      "ID 7: independent reference structure",
+      "Place markers with equipment switched off",
+      "Use the original slow-motion recording"
+    ],
+    "sample": "synthetic_good_healthy.mp4",
+    "narration": "The intended user is a maintenance technician without permanently installed vibration sensors. Place the machine marker on a stationary housing, with the equipment switched off. Place an independent reference marker on a separate structure. Record original slow motion video from a stable camera position. OpenCV detects the marker corners and estimates common camera movement. A similarity transform compensates translation, rotation and scale before the vibration signal is analyzed."
+  },
+  {
+    "title": "Known input. Measured output.",
+    "subtitle": "Frequency recovery on the bundled synthetic baseline.",
+    "bullets": [
+      "Input frequency: 24.300 Hz",
+      "Recovered frequency: 24.305 Hz",
+      "Timing: PROBABLE | Capture: 240 fps",
+      "Amplitude class: LOWER_BOUND"
+    ],
+    "sample": null,
+    "narration": "Here is the actual bundled baseline video, with a known input frequency of twenty four point three hertz. The pipeline recovered twenty four point three zero five hertz. Capture timing is labeled probable, rather than confirmed. The motion is small enough that compression may underestimate its amplitude, so the result is labeled lower bound. The agent asks for the nameplate speed when the shaft frequency is only assumed. Providing fourteen hundred and fifty eight revolutions per minute allows the next interpretation step.",
+    "screenshot": "aws-summary-ui.png"
+  },
+  {
+    "title": "Visual evidence changes the action",
+    "subtitle": "A compatible baseline turns a reading into a decision.",
+    "bullets": [
+      "Stronger-motion frequency: 24.301 Hz",
+      "Same point, view, frame rate and scale",
+      "Observed relative level increase: 1055.7%",
+      "Next action: draft inspection work order"
+    ],
+    "sample": "synthetic_good_imbalance.mp4",
+    "narration": "The second synthetic recording contains stronger periodic motion. Its recovered frequency is twenty four point three zero one hertz. Before comparing, the system checks measurement point, camera view, axis, frame rate, speed, marker size and scale. In the completed demonstration, the relative level increased by one thousand and fifty five point seven percent. This exceeds the team heuristic and the modeled combined uncertainty. That visual evidence changes the next action: the agent drafts an inspection work order requiring human review."
+  },
+  {
+    "title": "Refuse weak evidence",
+    "subtitle": "Different failures produce different next steps.",
+    "bullets": [
+      "Tiny marker: move closer and recapture",
+      "Ambiguous slow motion: upload original file",
+      "Retimed 240 → 30 fps can cause an 8× error",
+      "Bounded retries end inconclusively"
+    ],
+    "sample": null,
+    "narration": "Failure handling is part of the product. This tiny marker sample requests a closer recording instead of proceeding to diagnosis. Another supplied clip was captured at two hundred and forty frames per second but saved at thirty frames per second without a capture rate tag. Treating playback time as physical time could produce an eightfold frequency error. The agent refuses that timing and requests an original recording. Recapture attempts are bounded, so unresolved evidence ends inconclusively.",
+    "screenshot": "live-ui.png"
+  },
+  {
+    "title": "Human control. Observable decisions.",
+    "subtitle": "Verified deployment: OpenCV processing and state run on AWS.",
+    "bullets": [
+      "Perceive → check → measure → compare → request approval",
+      "Rule planner verified; Bedrock is optional",
+      "AWS target: EC2 + S3 + DynamoDB + SNS",
+      "CloudFront HTTPS | CloudWatch metrics"
+    ],
+    "sample": null,
+    "narration": "The implemented loop records allowed actions, tool choices, state changes and latency. The verified AWS demonstration uses the deterministic rule planner. An optional Amazon Bedrock planner can choose only actions permitted by policy. Work orders use expiring tokens and a single use approval decision. The local end to end security test accepted one approval and rejected a second with status four hundred and nine. The running cloud architecture uses EC2 for OpenCV processing, private S3 storage for recordings, DynamoDB for sessions and jobs, SNS for supervisor requests, and CloudFront for the public HTTPS endpoint. All four synthetic workflows passed through that deployed application.",
+    "architecture": true
+  },
+  {
+    "title": "Measured limits. Clear next steps.",
+    "subtitle": "Evidence first — even when the answer is “not yet”.",
+    "bullets": [
+      "41 unit and API tests passed",
+      "All four bundled workflows passed on AWS",
+      "No field or accelerometer validation yet",
+      "Absolute mm/s and ISO zones remain disabled"
+    ],
+    "sample": null,
+    "narration": "Forty one unit and API tests passed, and all four bundled videos were evaluated. The successful frequency estimates do not establish field accuracy. The baseline amplitude was substantially underestimated, and there are no real machine recordings or accelerometer comparisons yet. The default interface therefore withholds absolute vibration severity and ISO zones. The next step is simultaneous phone and contact sensor validation on held out machines. VibraLens demonstrates an evidence driven maintenance workflow: measure what the camera supports, request what is missing, and keep consequential action under human control."
+  }
+]
