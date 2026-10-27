@@ -49,6 +49,7 @@ uvicorn vibralens.api:app --port 8000                  # open http://localhost:8
 - Four bundled videos: `python tools/run_scenarios.py samples` writes `samples/results.json`.
 - Download a session's portable JSON evidence from **Download evidence report** on its analysis page.
 - Build a clean judge archive: `python tools/package_submission.py` → `dist/VibraLens-submission.zip`.
+- Devpost's 35 MB attachment: `python tools/package_judges.py` → `dist/VibraLens-Judges.zip` (about 6.1 MB). This includes the report, code, evaluation and demo, with the four large input videos available separately in this repository.
 - Optional container: `docker build -t vibralens .` then `docker run --rm -p 8000:8000 -v vibralens-data:/data vibralens`.
   The Docker build and ARM64 installation still need verification on the target host.
 
